@@ -23,6 +23,8 @@ class App extends React.Component {
         </Container>
       </Container>
       // npm run git -- "" && postgit
+      // npm run git -- "update css module" && postgit
+      // 測試 build 好的檔案 'test': npm run build && mocha --compilers js:babel-core/register
     );
   }
 }
