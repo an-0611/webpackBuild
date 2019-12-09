@@ -27,7 +27,11 @@
     "test": "node_modules/mocha/bin/mocha --require @babel/register ",
     "start": "node server.js",
     "git": "git add . && git commit -m",
-    "postgit": "git push -u origin master"
+    "postgit": "git push -u origin master",
+    "dockerize": "docker build -t webpackbuild .",
+    "dockerServer": "docker run -p 3000:8080 webpackbuild",
+    "stopAll": "docker stop $(docker ps -a -q)",
+    "deleteAll": "docker rmi $(docker images -a -q)" 
   },
   "author": "",
   "license": "ISC",

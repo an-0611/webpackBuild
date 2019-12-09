@@ -5,7 +5,7 @@ const config = require('./webpack.hot.config.js')
 
 const express = require('express')
 const app = express();
-const port = 3000;
+const port = 8080;
 const host = '0.0.0.0'
 
 const compiler = webpack(config);

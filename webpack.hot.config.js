@@ -15,7 +15,7 @@ module.exports = {
   entry: {
     app: [
       './components/app.js',
-      'webpack-hot-middleware/client?reload=true'
+      // 'webpack-hot-middleware/client?reload=true'
     ]
   },
   output: {

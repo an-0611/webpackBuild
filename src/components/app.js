@@ -25,11 +25,13 @@ class App extends React.Component {
       // npm run git -- "" && postgit
       // npm run git -- "update css module" && postgit
       // 測試 build 好的檔案 'test': npm run build && mocha --compilers js:babel-core/register
+      // docker deploy => npm run build && docker-compose up -d https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/188625/
+      // dockerfile setting https://www.jinnsblog.com/2018/12/docker-dockerfile-guide.html
     );
   }
 }
 
-// if (module.hot) module.hot.accept();
+if (module.hot) module.hot.accept();
 
 ReactDOM.render(
   <App />,
