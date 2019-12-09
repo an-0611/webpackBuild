@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   color: red;
   text-align: center;
+  opaciy: 1;
 `
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
       <Container>
         <div className="app">webpack 4 環境建制1</div>
       </Container>
+      // npm run git -- "" && postgit
     );
   }
 }
