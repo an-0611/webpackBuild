@@ -24,7 +24,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha --require @babel/register",
+    "test": "node_modules/mocha/bin/mocha --require @babel/register ",
     "start": "node server.js",
     "git": "git add . && git commit -m",
     "postgit": "git push -u origin master"

@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
-        <div className="app">webpack 4 環境建制1</div>
+        <div className="app">webpack 4 環境建制(travis test Ver.)</div>
         <Container primary>
           <div>test</div>
         </Container>
