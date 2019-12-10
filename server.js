@@ -6,7 +6,7 @@ const config = require('./webpack.hot.config.js')
 const express = require('express')
 const app = express();
 // const port = 8080;
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000; // 用docker 時換成8080,  webpack output記得改
 // const host = '0.0.0.0';
 const host = process.env.PORT ? null : '0.0.0.0';
 

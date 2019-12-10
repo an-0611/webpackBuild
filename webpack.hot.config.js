@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'js'),
     filename: '[name].js',
-    publicPath: 'http://localhost:8080/static/'
+    publicPath: 'http://localhost:3000/static/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
