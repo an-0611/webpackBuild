@@ -15,13 +15,13 @@ module.exports = {
   entry: {
     app: [
       './components/app.js',
-      // 'webpack-hot-middleware/client?reload=true'
+      'webpack-hot-middleware/client?reload=true'
     ]
   },
   output: {
     path: path.resolve(__dirname, 'js'),
     filename: '[name].js',
-    publicPath: 'http://localhost:3000/static/'
+    publicPath: 'http://localhost:8080/static/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),

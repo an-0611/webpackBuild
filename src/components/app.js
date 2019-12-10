@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
-        <div className="app">webpack 4 環境建制(travis test Ver.)</div>
+        <div className="app">webpack 4 環境建制</div>
         <Container primary>
           <div>test</div>
         </Container>
@@ -31,7 +31,7 @@ class App extends React.Component {
   }
 }
 
-if (module.hot) module.hot.accept();
+// if (module.hot) module.hot.accept();
 
 ReactDOM.render(
   <App />,
