@@ -10,27 +10,29 @@ const port = process.env.PORT || 8080;
 // const host = '0.0.0.0';
 const host = process.env.PORT ? null : '0.0.0.0';
 
-if (process.env.PORT) {
-    app.get('/', function(req, res) {
-      var body = '<!doctype html>' +
-        '<html lang="en">'+
-        '<head><meta charset="utf-8"></head>' +
-        '<body>' +
-        '<script src="/static/app.js"></script>' +
-        '</body>'+
-        '</html>';
+const http = require('http');
 
-      res.writeHead(200, {"Content-Type": "text/html"});
-      res.write(body);
-      res.end();
-    });
-  // const server = http.createServer((req, res) => {
-  //   res.statusCode = 200;
-  //   res.setHeader('Content-Type', 'text/plain');
-  //   res.end('TTT 123\n')
-  // })
+if (process.env.PORT) {
+    // app.get('/', function(req, res) {
+    //   var body = '<!doctype html>' +
+    //     '<html lang="en">'+
+    //     '<head><meta charset="utf-8"></head>' +
+    //     '<body>' +
+    //     '<script src="/static/app.js"></script>' +
+    //     '</body>'+
+    //     '</html>';
+
+    //   res.writeHead(200, {"Content-Type": "text/html"});
+    //   res.write(body);
+    //   res.end();
+    // });
+  const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('TTT 123\n')
+  })
   
-  // server.listen(port, () => console.log(`Listening on ${port}`));
+  server.listen(port, () => console.log(`Listening on ${port}`));
 } else {
   const compiler = webpack(config);
 
