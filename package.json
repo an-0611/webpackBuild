@@ -46,7 +46,8 @@
     "dockerize": "docker build -t webpackbuild .",
     "dockerServer": "docker run -p 3000:8080 webpackbuild",
     "stopAll": "docker stop $(docker ps -a -q)",
-    "deleteAll": "docker rmi $(docker images -a -q)"
+    "deleteAll": "docker rmi $(docker images -a -q)",
+    "pull": "git pull --rebase"
   },
   "author": "",
   "license": "ISC",

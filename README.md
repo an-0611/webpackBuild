@@ -12,4 +12,4 @@
 10. Redux middleware(thunk saga observable) // no yet <br />
 11. Server side rendering // no yet <br />
 
-e.g. graphql, html schema
+e.g. graphql, html schema router
