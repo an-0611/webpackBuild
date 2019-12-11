@@ -26,13 +26,13 @@ module.exports = {
   mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
   // context: path.resolve(__dirname, 'src'),
   devtool: 'cheap-module-eval-source-map',
-  entry: {
-    app: [
-      './src/index.js',
-      // 'webpack-hot-middleware/client?reload=true' // 現在build 會包含此模組 但不需要 webpack改成dev & prod 後 將此依賴僅輸出於dev 使build出來的檔案不包含該模組
-    ]
-  },
-  // entry: './src/index.js', // can use for prod env 
+  // entry: {
+  //   app: [
+  //     './src/index.js',
+  //     // 'webpack-hot-middleware/client?reload=true' // 現在build 會包含此模組 但不需要 webpack改成dev & prod 後 將此依賴僅輸出於dev 使build出來的檔案不包含該模組
+  //   ]
+  // },
+  entry: './src/index.js', // can use for prod env 
   output: {
     path: path.join(__dirname,'/dist'),
     filename: './main.js'
