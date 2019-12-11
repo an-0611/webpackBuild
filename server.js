@@ -10,9 +10,23 @@ const app = express();
 // const port = 8080;
 const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack output記得改
 // const host = '0.0.0.0';
-const host = process.env.PORT ? null : '0.0.0.0';
+// const host = process.env.PORT ? null : '0.0.0.0';
 
 if (process.env.PORT) {
+  try {
+    console.log('PORT1: ', process.env.PORT)
+    const server = http.createServer((req, res) => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('TTT 123\n')
+    })
+    console.log('server: ', server);
+    server.listen(port, () => console.log(`Listening on ${port}`));
+  } catch(err) {
+    console.log('PORT2: ', process.env.PORT)
+    console.log(err)
+  }
+  
     // app.get('/', function(req, res) { // 之後改成ssr 先用測試
     //   var body = '<!doctype html>' +
     //     '<html lang="en">'+
@@ -27,13 +41,7 @@ if (process.env.PORT) {
     //   res.write(body);
     //   res.end();
     // });
-  const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('TTT 123\n')
-  })
   
-  server.listen(port, () => console.log(`Listening on ${port}`));
 } else {
   const compiler = webpack(config);
 
@@ -54,7 +62,7 @@ if (process.env.PORT) {
     if (error) {
       console.error(error)
     } else {
-      console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port)
+      // console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port)
     }
   })
 }
