@@ -58,11 +58,11 @@ if (process.env.PORT) {
   })
 
 
-  app.listen(port, host, function(error) {
-    if (error) {
-      console.error(error)
-    } else {
-      // console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port)
-    }
-  })
+  // app.listen(port, host, function(error) {
+  //   if (error) {
+  //     console.error(error)
+  //   } else {
+  //     console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port)
+  //   }
+  // })
 }
