@@ -11,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack output記得改
 // const host = '0.0.0.0';
 // const host = process.env.PORT ? null : '0.0.0.0';
+console.log('14Port: ', port, process.env.PORT, 888)
 
 if (process.env.PORT) {
   try {
@@ -43,6 +44,7 @@ if (process.env.PORT) {
     // });
   
 } else {
+  console.log(666)
   const compiler = webpack(config);
 
   app.use(webpackDevMiddleware(compiler, { // app.use() =< 此方法是宣告使用一個路由，變數 index 就是引入 routers 資料夾裡的 index.route 檔案，該路徑詳細內容就在該文件中編輯。
