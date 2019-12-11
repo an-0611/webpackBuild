@@ -15,6 +15,14 @@ if (process.env.PORT) {
     // const server = http.createServer((req, res) => {
     //   res.statusCode = 200;
     //   res.setHeader('Content-Type', 'text/plain');
+    //   var body = '<!doctype html>' +
+    //     '<html lang="en">'+
+    //     '<head><meta charset="utf-8"></head>' +
+    //     '<body>' +
+    //     '<div>server render heroku test</div>'
+    //     '</body>'+
+    //     '</html>';
+    //   res.write(body);
     //   res.end('TTT 123\n')
     // })
     // server.listen(port, () => console.log(`Listening on ${port}`));
@@ -31,24 +39,10 @@ if (process.env.PORT) {
       res.write(body);
       res.end();
     });
+    app.listen(port, () => console.log((`Listening on ${port}`)))
   } catch(err) {
     console.log(err)
   }
-  
-    // app.get('/', function(req, res) { // 之後改成ssr 先用測試
-    //   var body = '<!doctype html>' +
-    //     '<html lang="en">'+
-    //     '<head><meta charset="utf-8"></head>' +
-    //     '<body>' +
-    //     '<div>server render</div>'
-    //     // '<script src="/static/app.js"></script>' +
-    //     '</body>'+
-    //     '</html>';
-
-    //   res.writeHead(200, {"Content-Type": "text/html"});
-    //   res.write(body);
-    //   res.end();
-    // });
   
 } else {
   // app.use(path, router) router 代表一個由express.Router()創建的對象 可定義多個路由規則
