@@ -1,6 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-
+import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
 const Container = styled.div`
@@ -12,12 +10,13 @@ const Container = styled.div`
     border: 1px solid black;
   `};
 `
+// https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
-        <div className="app">webpack 4 環境建制1</div>
+        <div className="app">webpack 4 環境建制</div>
         <Container primary>
           <div>test</div>
         </Container>
@@ -33,7 +32,4 @@ class App extends React.Component {
 
 // if (module.hot) module.hot.accept();
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('content')
-);
+export default App;
