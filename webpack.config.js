@@ -23,7 +23,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 操做完 檢查 
 // npm run start    npm run test  npm run dockerize npm run build
 module.exports = {
-  mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
+  // mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
+  mode: 'production',
   // context: path.resolve(__dirname, 'src'),
   devtool: 'cheap-module-eval-source-map',
   // entry: {
