@@ -32,7 +32,7 @@
     "start": "node server.js --mode development",
     "git": "git add . && git commit -m",
     "postgit": "git push -u origin master",
-    "build": "webpack --mode development",
+    "build": "webpack",
     "dockerize": "docker build -t webpackbuild .",
     "dockerServer": "docker run -p 3000:8080 webpackbuild",
     "stopAll": "docker stop $(docker ps -a -q)",
