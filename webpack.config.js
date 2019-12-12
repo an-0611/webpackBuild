@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');  // 防止將某些import的包（package）打包到bundle中，或者在運行時（runtime）再去從外部獲取這些擴展依賴 // https://webpack.docschina.org/configuration/externals/
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // build打包前清除該目錄檔案 避免舊文件存在
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // build打包前清除該目錄檔案 避免舊文件存在
 // 除去node中干擾模快 如jquery 使用cdn引入而不使用node module內的jquery
 
 // https://medium.com/i-am-mike/webpack%E6%95%99%E5%AD%B8-%E4%B8%89-%E6%B0%B8%E4%B8%8D%E5%81%9C%E6%AD%A2%E7%9A%84watch-dbf98ebf8356
@@ -38,12 +38,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // build打包�
 // console.log(Html)
 
 const client = {
-  mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
+  // mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
   devtool: 'cheap-module-eval-source-map',
   // entry: './src/index.js', // can use for prod env 
   entry: { bundle: './src/index.js' }, // can use for prod env 
   output: {
-    path: path.join(__dirname,'/dist'),
+    path: path.resolve(__dirname, 'dist'),
     // filename: './main.js'
     filename: '[name].js'
   },
@@ -57,12 +57,12 @@ const client = {
     new webpack.NoEmitOnErrorsPlugin(), // 確保輸出的 assets 不會包含錯誤在裡面，在 compile 階段，有錯誤出現就終止。也可在 webpack.config 檔中設定 bail: true 的意思一樣
     new HtmlWebpackPlugin({ // 為你生成一個HTML5文件，其中包括使用script標籤的body中的所有webpack包 // 打包输出HTML
       title: 'React Webpack Babel Setup',
-      minify: {
-        removeComments: true, // 移除HTML中的注釋
-        collapseWhitespace: false, // 删除空白符与换行符 會變一行
-        minifyCSS: false// 壓縮內聯css
-      },
-      filename: './index.html',
+      // minify: {
+      //   removeComments: true, // 移除HTML中的注釋
+      //   collapseWhitespace: false, // 删除空白符与换行符 會變一行
+      //   minifyCSS: false// 壓縮內聯css
+      // },
+      // filename: './index.html',
       template: 'index.html' //　以根目錄底下的index.html當作模版 添加<div id=app></div> 若該index.html有其他js build出來的index.html也會有
     }),
     // new CleanWebpackPlugin({
@@ -94,9 +94,10 @@ const client = {
 }
 
 const server = {
+  devtool: "source-map",
   entry: { server: './server.js' }, // 這樣設定才不會打包到預設 webpack4 預設 main.js內 會獨立產一隻js 產玩的server.js 經過babel編譯就可以使用import es6 
   output: {
-    path: path.join(__dirname,'/dist'), // 又server.js 在 ./dist 資料夾內生成  server.js => res.sendFile index.html讀取路徑也要調整
+    path: path.resolve(__dirname,'dist'), // 又server.js 在 ./dist 資料夾內生成  server.js => res.sendFile index.html讀取路徑也要調整
     filename: '[name].js',
   },
   module: {
@@ -107,21 +108,29 @@ const server = {
         use: {
           loader: 'babel-loader', // 2.先用babel-loader進行轉換 在添加進綑綁中
         }
-      }
+      },
+      // {
+      //   test: /\.html$/,
+      //   use: [
+      //     {
+      //       loader: "html-loader"
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [
-    // new CleanWebpackPlugin({
-    //   cleanAfterEveryBuildPatterns: ['dist']
-    // })
   ],
-  externals: [nodeExternals()]
-  // target: 'node' 
+  externals: [nodeExternals()],
+  target: 'node',
+  // node: {
+  //   __dirname: false,
+  //   __filename: false,
+  // }
+  
 }
 
 module.exports = [client, server];
-// module.exports = client;
-// module.exports = server;
 
 // =====================================================================================================================
 

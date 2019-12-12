@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Html extends Component {
   render() {
-    const { helmet } = this.props;
+    const { helmet, appHtml } = this.props;
     // const scripts = bundles.filter(bundle => bundle.file.endsWith('.js')).map(bundle => <script src={`${siteUrl}${bundle.file}${staticVer}`} />);
     // const scripts = <script src="./main.js" />;
     // const scripts1 = <script src="./1.main.js" />;
@@ -15,10 +15,12 @@ class Html extends Component {
           <meta httpEquiv="x-ua-compatible" content="IE=edge" />
         </head>
         <body id="body">
-          {/* <div id="app" dangerouslySetInnerHTML={{ __html: content }} /> */}
-          <div id="app" dangerouslySetInnerHTML={{ __html: 'bodybody12333' }} />
-          {/* <script type="text/javascript" src="./bundle.js" /> */}
+          <div id="app" dangerouslySetInnerHTML={{ __html: appHtml }} />
+          {/* {appHtml} */}
+          {/* <div id="app" dangerouslySetInnerHTML={{ __html: 'bodybody12333' }} /> */}
+          <script type="text/javascript" src="bundle.js" />{/* 包含所有client file */}
           {/* <script type="text/javascript" src={`${window.location.href}bundle.js`} /> */}{/* 還在server side抓不到window */}
+          {/* // https://github.com/jakoblind/universal-react-server-bundle/blob/master/webpack.config.js */}
         </body>
       </html>
     );

@@ -13,7 +13,7 @@
 11. Redux middleware(thunk saga observable) // no yet <br />
 
 
-e.g. graphql(https://ithelp.ithome.com.tw/articles/10209443), html schema router react-helmet
+e.g. graphql(https://ithelp.ithome.com.tw/articles/10209443), html schema router react-helmet smtp
 https://webpack.js.org/guides/code-splitting/
 // split 2 webpack with dev && prod
 https://neighborhood999.github.io/webpack-tutorial-gitbook/Part1/WebpackDevServer.html
@@ -34,5 +34,8 @@ https://ithelp.ithome.com.tw/articles/10185302
 ssr all detail process
 
 nodemon // https://andy6804tw.github.io/2017/12/24/nodemon-tutorial/
-
 npm install --save-dev nodemon
+
+
+// p.s.
+解決server side hydrate flash 問題 (對應step3)

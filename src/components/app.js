@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Helmet from 'react-helmet';
 import styled, { css } from 'styled-components'
 
 const Container = styled.div`
@@ -13,12 +14,28 @@ const Container = styled.div`
 // https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 666,
+    };
+    this.callValue = this.callValue.bind(this);
+  }
+
+  callValue() {
+    console.log(this.state.value)
+  }
+
   render() {
     return (
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
+        <Helmet>
+          <title>helmet test</title>
+        </Helmet>
         <div className="app">webpack 4 環境建制</div>
         <Container primary>
           <div>test</div>
+          <button onClick={() => { this.callValue() }}>callValue</button>
         </Container>
       </Container>
       // npm run git -- "" && postgit
