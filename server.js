@@ -22,39 +22,40 @@ import App from './src/components/app';
 
 if (process.env.PORT) {
   try {
-    // const server = http.createServer((req, res) => {
-    //   res.statusCode = 200;
-    //   res.setHeader('Content-Type', 'text/plain');
-    //   var body = '<!doctype html>' +
-    //     '<html lang="en">'+
-    //     '<head><meta charset="utf-8"></head>' +
-    //     '<body>' +
-    //     '<div>server render heroku test</div>'
-    //     '</body>'+
-    //     '</html>';
-    //   res.write(body);
-    //   res.end('TTT 123\n')
-    // })
-    // server.listen(port, () => console.log(`Listening on ${port}`));
-    // const helmet = Helmet.renderStatic();
-    // res.send(`<!doctype html>\n${renderToStaticMarkup(<Html
-    //   helmet={helmet}
-    // />)}`);
-    app.get('/', function(req, res) { // 之後改成ssr 先用測試
-      var body = '<!doctype html>' +
-        '<html lang="zh-TW">'+
-        '<head><meta charset="utf-8"></head>' +
-        '<body>' +
-        '<div>server render heroku test</div>'
-        '</body>'+
-        '</html>';
-
-      res.writeHead(200, {"Content-Type": "text/html"});
-      res.write(body);
-      // res.send(body);
-      res.end();
+    app.get('/', function(req, res) {
+      try {
+        const helmet = Helmet.renderStatic();
+        const appHtml = renderToString(<App />);
+        res.send(`<!doctype html>\n${renderToStaticMarkup(<Html
+          helmet={helmet}
+          appHtml={appHtml}
+        />)}`);
+      } catch (err) {
+        console.log(err);
+      }
     });
-    app.listen(port, () => console.log((`Listening on ${port}`))) // need listen port to run server
+      
+    app.listen(port, function(error) {
+      if (error) {
+        console.error(error)
+      } else {
+        console.log('伺服器已啟動在 port %s', port);
+      }
+    })
+
+  //   app.get('/', function(req, res) { // 之後改成ssr 先用測試
+  //     var body = '<!doctype html>' +
+  //       '<html lang="zh-TW">'+
+  //       '<head><meta charset="utf-8"></head>' +
+  //       '<body>' +
+  //       '<div>server render heroku test</div>'
+  //       '</body>'+
+  //       '</html>';
+  //     res.writeHead(200, {"Content-Type": "text/html"});
+  //     res.write(body);
+  //     res.end();
+  //   });
+  //   app.listen(port, () => console.log((`Listening on ${port}`))) // need listen port to run server
   } catch(err) {
     console.log(err)
   }
@@ -81,21 +82,20 @@ if (process.env.PORT) {
 
   try {
     
-    app.use('/', express.static('dist')); // 放外面 css 就失效 ssr 也跟著壞 路徑改成只抓css? stylecomponent class 還在但失效
+    // app.use('/', express.static('dist')); // 放外面 css 就失效 ssr 也跟著壞 路徑改成只抓css? stylecomponent class 還在但失效
     // app.use(express.static('dist')); // 有用middleware 使用app.use 反之 app.get
 
     app.get('/', function(req, res) { // step2
       try {
-        // app.use('/', express.static('dist')); // step3 // 完成server 渲染<Html> , 需要把client side 靜態資源復原 (client.bundle.js || css) 取代<Html內容> 但事件消失 hydrate 也沒用
+        app.use('/', express.static('dist')); // step3 // 完成server 渲染<Html> , 需要把client side 靜態資源復原 (client.bundle.js || css) 取代<Html內容> 但事件消失 hydrate 也沒用
         // 把client side 資源載進來 bundle.js server side render 才吃得到伺服器第一次渲染資料 但放在裡面後 css 會失效 (不確定是不是stylecomponent問題) css 改成由html.js 引入
 
         // res.send is only on express server 只能調用一次 // 用於本機測試server 無論dev or production // 上傳至heroku or aws 會走上面 process.env.PORT的code
         const helmet = Helmet.renderStatic();
         const appHtml = renderToString(<App />);
         
-      // 提供給 express.static 函數的路徑，是相對於您從中啟動 node 程序的目錄。如果您是從另一個目錄執行 Express 應用程式，保險作法是使用您想提供之目錄的絕對路徑
-      // https://expressjs.com/zh-tw/starter/static-files.html
-
+        // 提供給 express.static 函數的路徑，是相對於您從中啟動 node 程序的目錄。如果您是從另一個目錄執行 Express 應用程式，保險作法是使用您想提供之目錄的絕對路徑
+        // https://expressjs.com/zh-tw/starter/static-files.html
         // renderToStaticMarku 可能造成換閃一下 // https://www.jishuwen.com/d/2BoD/zh-tw
         res.send(`<!doctype html>\n${renderToStaticMarkup(<Html
           helmet={helmet}
@@ -104,6 +104,7 @@ if (process.env.PORT) {
           // https://github.com/jakoblind/universal-react-server-bundle
           // https://medium.com/@slashtu/react-loadable-ssr-and-code-splitting-ede5b31baf35
         />)}`);
+
       } catch (err) {
         console.log(err);
       }
