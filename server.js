@@ -8,7 +8,7 @@ const config = require('./webpack.config.js')
 
 const express = require('express')
 const app = express();
-const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack output記得改 
+const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack output記得改   
 // const host = process.env.PORT ? null : '0.0.0.0';
 
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
