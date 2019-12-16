@@ -6,6 +6,9 @@ const config = require('./webpack.config.js')
 
 // const http = require('http');
 
+// __dirname：總是返回被執行的js所在文件夾的絕對路徑
+// __filename：總是返回被執行的js的絕對路徑
+
 const express = require('express')
 const app = express();
 const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack output記得改   
