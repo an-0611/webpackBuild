@@ -125,3 +125,22 @@ if (process.env.PORT) {
   // }
 
 }
+
+// can reference 
+// https://iter01.com/11212.html
+// https://github.com/jakoblind/universal-react-server-bundle/blob/master/server.js
+
+// !!!
+// https://pjchender.github.io/2018/09/21/react-ssr-%E7%AD%86%E8%A8%98/
+
+// webpack build from 0 to 1
+// https://segmentfault.com/a/1190000015490721
+
+// React Loadable
+// https://medium.com/@slashtu/react-loadable-ssr-and-code-splitting-ede5b31baf35
+
+// React-Webpack4-Babel-setup(github repo)
+// https://github.com/BusiRaja/React-Webpack4-Babel-Setup
+
+// most compeleted CICD (contain docker aws nodejs github circleCI...)
+// https://blog.amowu.com/2015/04/devops-continuous-integration-delivery-docker-circleci-aws-beanstalk.html

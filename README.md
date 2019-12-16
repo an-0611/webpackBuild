@@ -7,7 +7,7 @@
 5. Mocha // done<br />
 6. Docker // done<br />
 7. [Heroku](https://webpackbuild.herokuapp.com/) // done<br />
-8. Server side rendering // no yet <br />
+8. Server side rendering // done <br />
 9. Jenkins // no yet <br />
 10. Log(maybe kibana) // no yet <br />
 11. Redux middleware(thunk saga observable) // no yet <br />
