@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   callValue() {
-    console.log(this.state.value)
+    alert(this.state.value)
   }
 
   render() {
@@ -31,6 +31,7 @@ class App extends Component {
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
         <Helmet>
           <title>helmet test</title>
+          <meta name="description" content="desc ssr test" />
         </Helmet>
         <div className="app">webpack 4 環境建制</div>
         <Container primary>

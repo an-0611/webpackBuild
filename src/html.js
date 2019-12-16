@@ -6,6 +6,10 @@ class Html extends Component {
     // const scripts = bundles.filter(bundle => bundle.file.endsWith('.js')).map(bundle => <script src={`${siteUrl}${bundle.file}${staticVer}`} />);
     // const scripts = <script src="./main.js" />;
     // const scripts1 = <script src="./1.main.js" />;
+    // manifest service is for PWA
+    // const style = {
+    //   'background': 'none'
+    // }
     return (
       <html lang="zh-TW">
         <head>
@@ -14,9 +18,8 @@ class Html extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta httpEquiv="x-ua-compatible" content="IE=edge" />
         </head>
-        <body id="body">
+        <body id="body">{/* style={ style } */}
           <div id="app" dangerouslySetInnerHTML={{ __html: appHtml }} />
-          {/* {appHtml} */}
           {/* <div id="app" dangerouslySetInnerHTML={{ __html: 'bodybody12333' }} /> */}
           <script type="text/javascript" src="bundle.js" />{/* 包含所有client file */}
           {/* <script type="text/javascript" src={`${window.location.href}bundle.js`} /> */}{/* 還在server side抓不到window */}
