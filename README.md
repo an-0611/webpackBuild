@@ -8,9 +8,11 @@
 6. Docker // done<br />
 7. [Heroku](https://webpackbuild.herokuapp.com/) // done<br />
 8. Server side rendering // done <br />
-9. Jenkins // no yet <br />
-10. Log(maybe kibana) // no yet <br />
-11. Redux middleware(thunk saga observable) // no yet <br />
+9. Jenkins // (need service, use travis now)<br />
+10. Redux middleware(thunk saga observable) // no yet <br />
+11. buy one service to set docker image (travis test done => create docker image => service)
+
+ps: setting tree shaking, code splitting, dynamic import, router, dead code elimination, minify
 
 
 e.g. graphql(https://ithelp.ithome.com.tw/articles/10209443), html schema router react-helmet smtp
