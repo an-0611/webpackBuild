@@ -39,8 +39,8 @@ const nodeExternals = require('webpack-node-externals');  // 防止將某些impo
 // https://segmentfault.com/a/1190000015032321
 
 const client = {
-  // mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
-  mode: 'production',
+  mode: 'development', // npm run start 沒有設定會出現warning // 可拆成webpack.production.config.js & webpack.development.config.js
+  // mode: 'production',
   devtool: 'none', // 生產模式下:  devtool should be set to (none), source-map,hidden-source-map, or nosources-source-map
   // devtool: 'source-map', // devtool 影響tree shaking https://github.com/webpack-contrib/uglifyjs-webpack-plugin/issues/267
   // 設定下面幾種 devtool (eval, cheap-eval-source-map, cheap-module-eval-source-map, eval-source-map, eval-source-map)　會造成tree shaking失效
@@ -140,7 +140,7 @@ const client = {
 }
 
 const server = {
-  devtool: "source-map",
+  // devtool: "source-map",// server.js 沒有設定tree shaking 可輸出devtool : soure-map 不影響shaking
   entry: { server: './server.js' }, // 這樣設定才不會打包到預設 webpack4 預設 main.js內 會獨立產一隻js 產玩的server.js 經過babel編譯就可以使用import es6 
   output: {
     path: path.resolve(__dirname,'dist'), // 又server.js 在 ./dist 資料夾內生成  server.js => res.sendFile index.html讀取路徑也要調整
