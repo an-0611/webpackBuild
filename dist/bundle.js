@@ -1,1 +1,175 @@
-!function(e){function t(t){for(var r,a,i=t[0],l=t[1],u=t[2],p=0,b=[];p<i.length;p++)a=i[p],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&b.push(o[a][0]),o[a]=0;for(r in l)Object.prototype.hasOwnProperty.call(l,r)&&(e[r]=l[r]);for(s&&s(t);b.length;)b.shift()();return c.push.apply(c,u||[]),n()}function n(){for(var e,t=0;t<c.length;t++){for(var n=c[t],r=!0,i=1;i<n.length;i++){var l=n[i];0!==o[l]&&(r=!1)}r&&(c.splice(t--,1),e=a(a.s=n[0]))}return e}var r={},o={0:0},c=[];function a(t){if(r[t])return r[t].exports;var n=r[t]={i:t,l:!1,exports:{}};return e[t].call(n.exports,n,n.exports,a),n.l=!0,n.exports}a.m=e,a.c=r,a.d=function(e,t,n){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(a.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)a.d(n,r,function(t){return e[t]}.bind(null,r));return n},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="";var i=window.webpackJsonp=window.webpackJsonp||[],l=i.push.bind(i);i.push=t,i=i.slice();for(var u=0;u<i.length;u++)t(i[u]);var s=l;c.push([11,1]),n()}({11:function(module,exports,__webpack_require__){"use strict";eval('\n\nvar _react = _interopRequireDefault(__webpack_require__(0));\n\nvar _reactDom = __webpack_require__(13);\n\nvar _app = _interopRequireDefault(__webpack_require__(17));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }\n\n// import ReactDOM from \'react-dom\'\nvar component = // <Router>\n_react["default"].createElement(_app["default"], null) // </Router>\n;\n\n(0, _reactDom.hydrate)( // dydrate 將 JS 功能重新放回到已經被伺服器所渲染的 HTML 樣版上\ncomponent, document.getElementById(\'app\'));//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTEuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL2luZGV4LmpzPzEyZDUiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuLy8gaW1wb3J0IFJlYWN0RE9NIGZyb20gJ3JlYWN0LWRvbSdcbmltcG9ydCB7IGh5ZHJhdGUgfSAgZnJvbSAncmVhY3QtZG9tJ1xuLy8gaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7XG5pbXBvcnQgQXBwIGZyb20gJy4vY29tcG9uZW50cy9hcHAnXG5cbmNvbnN0IGNvbXBvbmVudCA9IChcbiAgLy8gPFJvdXRlcj5cbiAgICA8QXBwIC8+XG4gIC8vIDwvUm91dGVyPlxuKTtcblxuaHlkcmF0ZSggLy8gZHlkcmF0ZSDlsIcgSlMg5Yqf6IO96YeN5paw5pS+5Zue5Yiw5bey57aT6KKr5Ly65pyN5Zmo5omA5riy5p+T55qEIEhUTUwg5qij54mI5LiKXG4gIGNvbXBvbmVudCxcbiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpXG4pO1xuIl0sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBSkE7QUFLQTtBQUVBO0FBRkE7QUFDQTtBQUtBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///11\n')},17:function(module,exports,__webpack_require__){"use strict";eval('\n\nObject.defineProperty(exports, "__esModule", {\n  value: true\n});\nexports["default"] = void 0;\n\nvar _react = _interopRequireWildcard(__webpack_require__(0));\n\nvar _reactHelmet = _interopRequireDefault(__webpack_require__(18));\n\nvar _styledComponents = _interopRequireWildcard(__webpack_require__(26));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }\n\nfunction _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }\n\nfunction _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn\'t been initialised - super() hasn\'t been called"); } return self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _templateObject2() {\n  var data = _taggedTemplateLiteral(["\\n    background: white;\\n    border: 1px solid black;\\n  "]);\n\n  _templateObject2 = function _templateObject2() {\n    return data;\n  };\n\n  return data;\n}\n\nfunction _templateObject() {\n  var data = _taggedTemplateLiteral(["\\n  color: ", ";\\n  text-align: center;\\n  opaciy: 1;\\n  ", ";\\n"]);\n\n  _templateObject = function _templateObject() {\n    return data;\n  };\n\n  return data;\n}\n\nfunction _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }\n\nvar Container = _styledComponents["default"].div(_templateObject(), function (props) {\n  return props.primary ? \'green\' : \'red\';\n}, function (props) {\n  return props.primary && (0, _styledComponents.css)(_templateObject2());\n}); // https://medium.com/webpack/webpack-4-import-and-commonjs-d619d626b655\n\n\nvar App =\n/*#__PURE__*/\nfunction (_Component) {\n  _inherits(App, _Component);\n\n  function App(props) {\n    var _this;\n\n    _classCallCheck(this, App);\n\n    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));\n    _this.state = {\n      value: 666\n    };\n    _this.callValue = _this.callValue.bind(_assertThisInitialized(_this));\n    return _this;\n  }\n\n  _createClass(App, [{\n    key: "callValue",\n    value: function callValue() {\n      alert(this.state.value);\n    }\n  }, {\n    key: "render",\n    value: function render() {\n      var _this2 = this;\n\n      return _react["default"].createElement(Container, {\n        prefetch: true\n      }, _react["default"].createElement(_reactHelmet["default"], null, _react["default"].createElement("title", null, "helmet test"), _react["default"].createElement("meta", {\n        name: "description",\n        content: "desc ssr test"\n      })), _react["default"].createElement("div", {\n        className: "app"\n      }, "webpack 4 \\u74B0\\u5883\\u5EFA\\u5236"), _react["default"].createElement(Container, {\n        primary: true\n      }, _react["default"].createElement("div", null, "test"), _react["default"].createElement("button", {\n        onClick: function onClick() {\n          _this2.callValue();\n        }\n      }, "callValue"))) // npm run git -- "" && postgit\n      // npm run git -- "update css module" && postgit\n      // 測試 build 好的檔案 \'test\': npm run build && mocha --compilers js:babel-core/register\n      // docker deploy => npm run build && docker-compose up -d https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/188625/\n      // dockerfile setting https://www.jinnsblog.com/2018/12/docker-dockerfile-guide.html\n      ;\n    }\n  }]);\n\n  return App;\n}(_react.Component); // if (module.hot) module.hot.accept();\n\n\nvar _default = App;\nexports["default"] = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTcuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vc3JjL2NvbXBvbmVudHMvYXBwLmpzPzJhOTgiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IENvbXBvbmVudCB9IGZyb20gJ3JlYWN0J1xuaW1wb3J0IEhlbG1ldCBmcm9tICdyZWFjdC1oZWxtZXQnO1xuaW1wb3J0IHN0eWxlZCwgeyBjc3MgfSBmcm9tICdzdHlsZWQtY29tcG9uZW50cydcblxuY29uc3QgQ29udGFpbmVyID0gc3R5bGVkLmRpdmBcbiAgY29sb3I6ICR7cHJvcHMgPT4gcHJvcHMucHJpbWFyeSA/ICdncmVlbicgOiAncmVkJ307XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgb3BhY2l5OiAxO1xuICAke3Byb3BzID0+IHByb3BzLnByaW1hcnkgJiYgY3NzYFxuICAgIGJhY2tncm91bmQ6IHdoaXRlO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xuICBgfTtcbmBcbi8vIGh0dHBzOi8vbWVkaXVtLmNvbS93ZWJwYWNrL3dlYnBhY2stNC1pbXBvcnQtYW5kLWNvbW1vbmpzLWQ2MTlkNjI2YjY1NVxuXG5jbGFzcyBBcHAgZXh0ZW5kcyBDb21wb25lbnQge1xuICBjb25zdHJ1Y3Rvcihwcm9wcykge1xuICAgIHN1cGVyKHByb3BzKTtcbiAgICB0aGlzLnN0YXRlID0ge1xuICAgICAgdmFsdWU6IDY2NixcbiAgICB9O1xuICAgIHRoaXMuY2FsbFZhbHVlID0gdGhpcy5jYWxsVmFsdWUuYmluZCh0aGlzKTtcbiAgfVxuXG4gIGNhbGxWYWx1ZSgpIHtcbiAgICBhbGVydCh0aGlzLnN0YXRlLnZhbHVlKVxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8Q29udGFpbmVyIHByZWZldGNoPnsvKiBwcmVmZXRjaOmgkOWPliDmj5DliY3lrozmiJDmuLLmn5M/ICovfVxuICAgICAgICA8SGVsbWV0PlxuICAgICAgICAgIDx0aXRsZT5oZWxtZXQgdGVzdDwvdGl0bGU+XG4gICAgICAgICAgPG1ldGEgbmFtZT1cImRlc2NyaXB0aW9uXCIgY29udGVudD1cImRlc2Mgc3NyIHRlc3RcIiAvPlxuICAgICAgICA8L0hlbG1ldD5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhcHBcIj53ZWJwYWNrIDQg55Kw5aKD5bu65Yi2PC9kaXY+XG4gICAgICAgIDxDb250YWluZXIgcHJpbWFyeT5cbiAgICAgICAgICA8ZGl2PnRlc3Q8L2Rpdj5cbiAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9eygpID0+IHsgdGhpcy5jYWxsVmFsdWUoKSB9fT5jYWxsVmFsdWU8L2J1dHRvbj5cbiAgICAgICAgPC9Db250YWluZXI+XG4gICAgICA8L0NvbnRhaW5lcj5cbiAgICAgIC8vIG5wbSBydW4gZ2l0IC0tIFwiXCIgJiYgcG9zdGdpdFxuICAgICAgLy8gbnBtIHJ1biBnaXQgLS0gXCJ1cGRhdGUgY3NzIG1vZHVsZVwiICYmIHBvc3RnaXRcbiAgICAgIC8vIOa4rOippiBidWlsZCDlpb3nmoTmqpTmoYggJ3Rlc3QnOiBucG0gcnVuIGJ1aWxkICYmIG1vY2hhIC0tY29tcGlsZXJzIGpzOmJhYmVsLWNvcmUvcmVnaXN0ZXJcbiAgICAgIC8vIGRvY2tlciBkZXBsb3kgPT4gbnBtIHJ1biBidWlsZCAmJiBkb2NrZXItY29tcG9zZSB1cCAtZCBodHRwczovL2NvZGVydHcuY29tLyVFNyVBOCU4QiVFNSVCQyU4RiVFOCVBQSU5RSVFOCVBOCU4MC8xODg2MjUvXG4gICAgICAvLyBkb2NrZXJmaWxlIHNldHRpbmcgaHR0cHM6Ly93d3cuamlubnNibG9nLmNvbS8yMDE4LzEyL2RvY2tlci1kb2NrZXJmaWxlLWd1aWRlLmh0bWxcbiAgICApO1xuICB9XG59XG5cbi8vIGlmIChtb2R1bGUuaG90KSBtb2R1bGUuaG90LmFjY2VwdCgpO1xuXG5leHBvcnQgZGVmYXVsdCBBcHA7Il0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUE7QUFDQTtBQUFBO0FBQ0E7QUFBQTtBQUNBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUNBO0FBQ0E7QUFBQTtBQUdBO0FBQUE7QUFDQTtBQUNBO0FBS0E7Ozs7O0FBQ0E7QUFBQTtBQUNBO0FBREE7QUFDQTtBQUFBO0FBQ0E7QUFDQTtBQURBO0FBR0E7QUFMQTtBQU1BO0FBQ0E7OztBQUNBO0FBQ0E7QUFDQTs7O0FBRUE7QUFBQTtBQUNBO0FBQUE7QUFDQTtBQUFBO0FBR0E7QUFBQTtBQUFBO0FBRUE7QUFBQTtBQUNBO0FBQUE7QUFFQTtBQUFBO0FBQUE7QUFBQTtBQUlBO0FBQ0E7QUFDQTtBQUNBO0FBaEJBO0FBa0JBOzs7O0FBaENBO0FBQ0E7QUFDQTtBQW1DQTtBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///17\n')}});
+!function(modules) {
+    function webpackJsonpCallback(data) {
+        for (var moduleId, chunkId, chunkIds = data[0], moreModules = data[1], executeModules = data[2], i = 0, resolves = []; i < chunkIds.length; i++) chunkId = chunkIds[i], 
+        Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId] && resolves.push(installedChunks[chunkId][0]), 
+        installedChunks[chunkId] = 0;
+        for (moduleId in moreModules) Object.prototype.hasOwnProperty.call(moreModules, moduleId) && (modules[moduleId] = moreModules[moduleId]);
+        for (parentJsonpFunction && parentJsonpFunction(data); resolves.length; ) resolves.shift()();
+        return deferredModules.push.apply(deferredModules, executeModules || []), checkDeferredModules();
+    }
+    function checkDeferredModules() {
+        for (var result, i = 0; i < deferredModules.length; i++) {
+            for (var deferredModule = deferredModules[i], fulfilled = !0, j = 1; j < deferredModule.length; j++) {
+                var depId = deferredModule[j];
+                0 !== installedChunks[depId] && (fulfilled = !1);
+            }
+            fulfilled && (deferredModules.splice(i--, 1), result = __webpack_require__(__webpack_require__.s = deferredModule[0]));
+        }
+        return result;
+    }
+    var installedModules = {}, installedChunks = {
+        0: 0
+    }, deferredModules = [];
+    function __webpack_require__(moduleId) {
+        if (installedModules[moduleId]) return installedModules[moduleId].exports;
+        var module = installedModules[moduleId] = {
+            i: moduleId,
+            l: !1,
+            exports: {}
+        };
+        return modules[moduleId].call(module.exports, module, module.exports, __webpack_require__), 
+        module.l = !0, module.exports;
+    }
+    __webpack_require__.m = modules, __webpack_require__.c = installedModules, __webpack_require__.d = function(exports, name, getter) {
+        __webpack_require__.o(exports, name) || Object.defineProperty(exports, name, {
+            enumerable: !0,
+            get: getter
+        });
+    }, __webpack_require__.r = function(exports) {
+        "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(exports, Symbol.toStringTag, {
+            value: "Module"
+        }), Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+    }, __webpack_require__.t = function(value, mode) {
+        if (1 & mode && (value = __webpack_require__(value)), 8 & mode) return value;
+        if (4 & mode && "object" == typeof value && value && value.__esModule) return value;
+        var ns = Object.create(null);
+        if (__webpack_require__.r(ns), Object.defineProperty(ns, "default", {
+            enumerable: !0,
+            value: value
+        }), 2 & mode && "string" != typeof value) for (var key in value) __webpack_require__.d(ns, key, function(key) {
+            return value[key];
+        }.bind(null, key));
+        return ns;
+    }, __webpack_require__.n = function(module) {
+        var getter = module && module.__esModule ? function() {
+            return module.default;
+        } : function() {
+            return module;
+        };
+        return __webpack_require__.d(getter, "a", getter), getter;
+    }, __webpack_require__.o = function(object, property) {
+        return Object.prototype.hasOwnProperty.call(object, property);
+    }, __webpack_require__.p = "";
+    var jsonpArray = window.webpackJsonp = window.webpackJsonp || [], oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+    jsonpArray.push = webpackJsonpCallback, jsonpArray = jsonpArray.slice();
+    for (var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+    var parentJsonpFunction = oldJsonpFunction;
+    deferredModules.push([ 27, 1 ]), checkDeferredModules();
+}({
+    27: function(module, __webpack_exports__, __webpack_require__) {
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        var react = __webpack_require__(0), react_default = __webpack_require__.n(react), react_dom = __webpack_require__(8), Helmet = __webpack_require__(9), Helmet_default = __webpack_require__.n(Helmet), styled_components_browser_esm = __webpack_require__(2);
+        function _typeof(obj) {
+            return (_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj) {
+                return typeof obj;
+            } : function(obj) {
+                return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+            })(obj);
+        }
+        function _defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, 
+                "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
+        function _getPrototypeOf(o) {
+            return (_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o) {
+                return o.__proto__ || Object.getPrototypeOf(o);
+            })(o);
+        }
+        function _assertThisInitialized(self) {
+            if (void 0 === self) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+            return self;
+        }
+        function _setPrototypeOf(o, p) {
+            return (_setPrototypeOf = Object.setPrototypeOf || function(o, p) {
+                return o.__proto__ = p, o;
+            })(o, p);
+        }
+        function _templateObject2() {
+            var data = _taggedTemplateLiteral([ "\n    background: white;\n    border: 1px solid black;\n  " ]);
+            return _templateObject2 = function() {
+                return data;
+            }, data;
+        }
+        function _templateObject() {
+            var data = _taggedTemplateLiteral([ "\n  color: ", ";\n  text-align: center;\n  opaciy: 1;\n  ", ";\n" ]);
+            return _templateObject = function() {
+                return data;
+            }, data;
+        }
+        function _taggedTemplateLiteral(strings, raw) {
+            return raw = raw || strings.slice(0), Object.freeze(Object.defineProperties(strings, {
+                raw: {
+                    value: Object.freeze(raw)
+                }
+            }));
+        }
+        console.log(1 + 2);
+        var Container = styled_components_browser_esm.b.div(_templateObject(), function(props) {
+            return props.primary ? "green" : "red";
+        }, function(props) {
+            return props.primary && Object(styled_components_browser_esm.a)(_templateObject2());
+        }), app = function() {
+            function App(props) {
+                var _this, self, call;
+                return function(instance, Constructor) {
+                    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+                }(this, App), self = this, (_this = !(call = _getPrototypeOf(App).call(this, props)) || "object" !== _typeof(call) && "function" != typeof call ? _assertThisInitialized(self) : call).state = {
+                    value: 666
+                }, _this.callValue = _this.callValue.bind(_assertThisInitialized(_this)), _this;
+            }
+            var Constructor, protoProps, staticProps;
+            return function(subClass, superClass) {
+                if ("function" != typeof superClass && null !== superClass) throw new TypeError("Super expression must either be null or a function");
+                subClass.prototype = Object.create(superClass && superClass.prototype, {
+                    constructor: {
+                        value: subClass,
+                        writable: !0,
+                        configurable: !0
+                    }
+                }), superClass && _setPrototypeOf(subClass, superClass);
+            }(App, react["Component"]), Constructor = App, (protoProps = [ {
+                key: "callValue",
+                value: function() {
+                    alert(this.state.value);
+                }
+            }, {
+                key: "render",
+                value: function() {
+                    var _this2 = this;
+                    return react_default.a.createElement(Container, {
+                        prefetch: !0
+                    }, react_default.a.createElement(Helmet_default.a, null, react_default.a.createElement("title", null, "helmet test"), react_default.a.createElement("meta", {
+                        name: "description",
+                        content: "desc ssr test"
+                    })), react_default.a.createElement("div", {
+                        className: "app"
+                    }, "webpack 4 環境建制"), react_default.a.createElement(Container, {
+                        primary: !0
+                    }, react_default.a.createElement("div", null, "test"), react_default.a.createElement("button", {
+                        onClick: function() {
+                            _this2.callValue();
+                        }
+                    }, "callValue")));
+                }
+            } ]) && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), 
+            App;
+        }(), component = react_default.a.createElement(app, null);
+        Object(react_dom.hydrate)(component, document.getElementById("app"));
+    }
+});

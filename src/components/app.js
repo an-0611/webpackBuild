@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet';
 import styled, { css } from 'styled-components'
+import { add } from '../common/index'
+console.log(add(1,2))
 
 const Container = styled.div`
   color: ${props => props.primary ? 'green' : 'red'};

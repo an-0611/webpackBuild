@@ -1,8 +1,9 @@
 import React from 'react';
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
-const config = require('./webpack.config.js')
+// const webpack = require('webpack')
+import webpack from 'webpack'
+// const webpackDevMiddleware = require('webpack-dev-middleware')
+// const webpackHotMiddleware = require('webpack-hot-middleware')
+// const config = require('./webpack.config.js')
 
 // const http = require('http');
 
@@ -29,6 +30,8 @@ if (process.env.PORT) {
       try {
         const helmet = Helmet.renderStatic();
         const appHtml = renderToString(<App />);
+        var bundles = [];
+
         res.send(`<!doctype html>\n${renderToStaticMarkup(<Html
           helmet={helmet}
           appHtml={appHtml}

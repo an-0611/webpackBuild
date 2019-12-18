@@ -1,6 +1,10 @@
-{
+{ // 在這邊相當於webpack.config.js 設定 module.rules.use.options
   "presets": [
-    "@babel/preset-env",
+    ["@babel/preset-env",
+      { // 此配置讓server.js 不會轉出未引用的共用模組
+        "modules": false
+      }
+    ],
     "@babel/preset-react"
   ]
 }

@@ -1,5 +1,6 @@
 {
   "name": "webpackbuild",
+  "sideEffects": false,
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -36,6 +37,7 @@
     "mocha": "^6.2.2",
     "nodemon": "^2.0.2",
     "should": "^13.2.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
@@ -46,6 +48,7 @@
     "start": "node ./dist/server.js",
     "git": "git add . && git commit -m",
     "postgit": "git push -u origin master",
+    "buildDev": "webpack --watch --mode development",
     "build": "webpack --watch --mode production",
     "dockerize": "docker build -t webpackbuild .",
     "dockerServer": "docker run -p 3000:8080 webpackbuild",
