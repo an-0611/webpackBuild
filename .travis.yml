@@ -37,10 +37,11 @@ node_js:
 #     - docker stop $(docker ps -a -q) #stop docker
 #     - docker rmi $(docker images -a -q) #delete images
 
-# after_success: # step4 測試成功上傳server // gcp || ec2 && buy one domain
+#sample
+# after_success: # step4 測試成功上傳server // gcp || ec2 (can support docker is ok) && buy one domain
 #     - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-#     - docker push $IMAGE
-#     - curl https://sdk.cloud.google.com | bash
+#     - docker push $IMAGE # 將映像檔推上
+#     - curl https://sdk.cloud.google.com | bash # 安裝最新的Google Cloud SDK，因為Travis上的版本太舊
 #     - source /home/travis/.bashrc
 #     - gcloud components update kubectl
 #     - kubectl config set-credentials default --username=${GKE_USERNAME} --password=${GKE_PASSWORD}
