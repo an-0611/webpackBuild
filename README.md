@@ -32,3 +32,5 @@ https://ithelp.ithome.com.tw/articles/10185302
 // dependencies on heroku need update webpack && express
 // npm run dockerize need open docker first
 // git pull --rebase neet storaged
+
+update travis docker heroku
