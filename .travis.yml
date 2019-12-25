@@ -33,20 +33,20 @@ env:
 #     - npm dockerServer; sleep 10
 #     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
-after_success:
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      # push會抓預設latest #其他指令如 docker rmi 若沒指定tag 也會自動抓取latest
-      docker push $IMAGE;
+# after_success:
+#     - if [ "$TRAVIS_BRANCH" == "master" ]; then
+#       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
+#       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+#       # push會抓預設latest #其他指令如 docker rmi 若沒指定tag 也會自動抓取latest
+#       docker push $IMAGE;
 
-      # 2. 推images 到heroku
-      #   // do the deploy https://stackoverflow.com/questions/31338562/travisci-run-after-success-on-a-specific-branch
-    #   heroku container:login
-    #   heroku container:push web
-    # After you’ve successfully pushed an image to Container Registry, you can create a new release using: heroku container:release web
-    #   heroku container:release web
-      fi
+#       # 2. 推images 到heroku
+#       #   // do the deploy https://stackoverflow.com/questions/31338562/travisci-run-after-success-on-a-specific-branch
+#     #   heroku container:login
+#     #   heroku container:push web
+#     # After you’ve successfully pushed an image to Container Registry, you can create a new release using: heroku container:release web
+#     #   heroku container:release web
+#       fi
     
     # - docker build -t "$DOCKER_USERNAME/webpackbuild"
 
