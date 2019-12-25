@@ -41,7 +41,7 @@
     "git": "git add . && git commit -m",
     "postgit": "git push -u origin master",
     "buildDev": "webpack --watch --mode development",
-    "build": "webpack --watch --mode production",
+    "build": "webpack --mode production",
     "dockerBuild": "docker build -t webpackbuild . --no-cache",
     "dockerServer": "docker run -p 3000:8080 -d webpackbuild",
     "findImagesId": "docker images",
