@@ -27,7 +27,7 @@ script:
     - docker version
     - docker-compose version
 #     # start mocha test
-#     # - npm run test 
+    - npm run test 
 #     - 'make test'
 #     # pass test and start compiler Image
 #     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
