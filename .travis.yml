@@ -2,7 +2,6 @@ sudo: required
 language: node_js
 node_js:
     - "10"
-    - "9"
 
 services: 
     - docker
@@ -38,7 +37,9 @@ script:
 #     - npm dockerServer; sleep 10
 #     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
-# after_success:
+after_success:
+    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    - docker push $IMAGE
 #     - if [ "$TRAVIS_BRANCH" == "master" ]; then
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
