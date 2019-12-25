@@ -21,17 +21,17 @@ env:
     # 避免抓不到預設 手動上latest
     # - docker tag $IMAGE $IMAGE:latest
 
-script: 
-    # start mocha test
-    # - npm run test 
-    - 'make test'
-    # pass test and start compiler Image
-    # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
-    # -t: terminal, 讓操作者可以使用終端機操作intance
-    - docker build -t $IMAGE . --no-cache
-    - docker tag $IMAGE $IMAGE:latest
-    - npm dockerServer; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:3000
+# script: 
+#     # start mocha test
+#     # - npm run test 
+#     - 'make test'
+#     # pass test and start compiler Image
+#     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
+#     # -t: terminal, 讓操作者可以使用終端機操作intance
+#     - docker build -t $IMAGE . --no-cache
+#     - docker tag $IMAGE $IMAGE:latest
+#     - npm dockerServer; sleep 10
+#     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
