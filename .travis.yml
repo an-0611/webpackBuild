@@ -27,7 +27,7 @@ before_script:
 script: 
     - docker version
     - docker-compose version
-    # - docker run -t
+    # - docker run --rm $IMAGE:latest // run test
     # // 應該測試 docker
 #     # start mocha test
     - npm run test 
