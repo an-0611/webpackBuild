@@ -17,7 +17,7 @@ env:
 before_script:
     - docker build -t $IMAGE:$COMMIT . --no-cache
     - docker tag $IMAGE:$COMMIT $IMAGE:latest
-    - docker tag $IMAGE:$COMMIT $IMAGE:travis-$TRAVIS_BUILD_NUMBER
+    # - docker tag $IMAGE:$COMMIT $IMAGE:travis-$TRAVIS_BUILD_NUMBER
     # - docker build -t $IMAGE . --no-cache
     # docker tag 標記本地鏡像，將其歸入某一倉庫 # https://blog.csdn.net/yangshangwei/article/details/52799675
     # 避免抓不到預設 手動上latest
