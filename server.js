@@ -19,6 +19,7 @@ if (process.env.PORT) {
   try {
     app.get('/', function(req, res) {
       try {
+        app.use('/', express.static('dist'));
         const helmet = Helmet.renderStatic();
         const appHtml = renderToString(<App />);
         // var bundles = [];
