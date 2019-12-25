@@ -1,4 +1,4 @@
-sudo: required
+# sudo: required //mac os 不推薦使用
 language: node_js
 node_js:
     - "10"
@@ -45,7 +45,7 @@ after_success:
     # - if [ "$TRAVIS_BRANCH" == "master" ]; then
     #   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; 
       - echo "$DOCKER_PASSWORD" | docker login --username foo --password-stdin;
-      docker push $IMAGE;
+      - docker push $IMAGE;
     #   fi
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
