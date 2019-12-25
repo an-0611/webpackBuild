@@ -27,7 +27,7 @@ before_script:
 script: 
     - docker version
     - docker-compose version
-    # - docker run --rm $IMAGE:latest // run test
+    # - docker run --rm $IMAGE:latest // run test # Clean up (--rm) 指在容器運行完之後自動清除
     # // 應該測試 docker
 #     # start mocha test
     - npm run test 
@@ -42,9 +42,11 @@ script:
 #     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
 after_success:
-    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    - docker push $IMAGE
-#     - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push $IMAGE
+      fi
+
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
 #       # push會抓預設latest #其他指令如 docker rmi 若沒指定tag 也會自動抓取latest
