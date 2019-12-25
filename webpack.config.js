@@ -130,14 +130,14 @@ const server = {
           loader: 'babel-loader', // 2.先用babel-loader進行轉換 在添加進綑綁中
         }
       },
-      // {
-      //   test: /\.html$/,
-      //   use: [
-      //     {
-      //       loader: "html-loader"
-      //     }
-      //   ]
-      // }
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader"
+          }
+        ]
+      }
     ]
   },
   plugins: [
