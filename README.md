@@ -34,3 +34,4 @@ https://ithelp.ithome.com.tw/articles/10185302
 // git pull --rebase neet storaged
 
 update travis docker heroku
+travis.yml test
