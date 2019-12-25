@@ -27,9 +27,11 @@ before_script:
 script: 
     - docker version
     - docker-compose version
+    # - docker run -t
+    # // 應該測試 docker
 #     # start mocha test
     - npm run test 
-    # // 應該測試 docker 
+     
 #     - 'make test'
 #     # pass test and start compiler Image
 #     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .

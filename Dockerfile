@@ -17,6 +17,8 @@ ADD . /app
 
 # 安裝 npm package
 RUN npm install
+# RUN npm test
+# https://hub.docker.com/r/usemtech/nodejs-mocha/dockerfile
 # RUN yarn install
 # RUN npm ci --only=production
 ## ci for production
@@ -26,6 +28,7 @@ EXPOSE 3000
 
 # 透過 npm start 會運行 Nodejs App
 CMD npm start
+# CMD ["node", "./dist/server.js", mocha]
 
 
 
