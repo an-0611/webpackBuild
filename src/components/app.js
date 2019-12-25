@@ -32,12 +32,12 @@ class App extends Component {
     return (
       <Container prefetch>{/* prefetch預取 提前完成渲染? */}
         <Helmet>
-          <title>helmet test</title>
-          <meta name="description" content="desc ssr test" />
+          <title>React Helmet SSR</title>
+          <meta name="description" content="description ssr" />
         </Helmet>
         <div className="app">webpack 4 環境建制</div>
         <Container primary>
-          <div>test</div>
+          <div>test123</div>
           <button onClick={() => { this.callValue() }}>callValue</button>
         </Container>
       </Container>
@@ -49,7 +49,5 @@ class App extends Component {
     );
   }
 }
-
-// if (module.hot) module.hot.accept();
 
 export default App;

@@ -1,10 +1,75 @@
-# sudo: required
-
+sudo: required
 language: node_js
 node_js:
-    - "8"
-    - "7"
-    - "6"
+    - "10"
+    - "9"
+
+services: 
+    - docker
+
+env:
+    global:
+        - COMMIT=${TRAVIS_COMMIT::8}
+        - IMAGE=an19940611/webpackbuild
+#         - IMAGE_VERSION=$IMAGE:$COMMIT
+#         - DEPLOYMENT=frontend
+#         - CONTAINER_NAME=nodejs
+
+before_script:
+    - docker build -t $IMAGE . --no-cache
+    # docker tag 標記本地鏡像，將其歸入某一倉庫 # https://blog.csdn.net/yangshangwei/article/details/52799675
+    # 避免抓不到預設 手動上latest
+    - docker tag $IMAGE $IMAGE:latest
+
+script: 
+    # start mocha test
+    - npm test
+    # pass test and start compiler Image
+    # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
+    # -t: terminal, 讓操作者可以使用終端機操作intance
+    - npm dockerServer; sleep 10
+    - curl --retry 10 --retry-delay 5 -v http://localhost:3000
+
+after_success:
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      # push會抓預設latest #其他指令如 docker rmi 若沒指定tag 也會自動抓取latest
+      docker push $IMAGE;
+
+      # 2. 推images 到heroku
+      #   // do the deploy https://stackoverflow.com/questions/31338562/travisci-run-after-success-on-a-specific-branch
+    #   heroku container:login
+    #   heroku container:push web
+    # After you’ve successfully pushed an image to Container Registry, you can create a new release using: heroku container:release web
+    #   heroku container:release web
+      fi
+    
+    # - docker build -t "$DOCKER_USERNAME/webpackbuild"
+
+# deploy:
+#     provider: heroku
+#     api_key: 
+#         secure: travis encrypt $(heroku auth:token) --add deploy.api_key --pro
+#     app: webpackBuild
+
+    # Docker 部署，只要在儲存庫內放上 Dockerfile，透過 Heroku CLI 指令就可以將 Docker 容器上傳到 Heroku Docker Registry
+    # https://devcenter.heroku.com/articles/container-registry-and-runtime
+
+    # heroku container:login
+    # git clone https://github.com/heroku/alpinehelloworld.git
+    # heroku create
+    # heroku container:push web
+    # heroku container:release web
+    # heroku open
+    # travis test docker!!!!!
+
+# process => (code + dockerfile + tests) => source repo => Travis CI server (1.run tests && build service 2. docker build package 3. docker rigistry(登陸檔)) ＝> docker push (deploy)
+# docker process # https://columns.chicken-house.net/2017/08/05/what-cicd-do-you-need/
+# Docker + Travis CI + Kubernetes + GKE # https://ithelp.ithome.com.tw/articles/10196743
+# 用 Travis 自動上傳 Docker Image 到 Docker Registry # https://blog.wu-boy.com/2016/09/upload-docker-image-to-registry-using-travis/
+# travis doc(with docker) Using Docker in Builds # https://docs.travis-ci.com/user/docker/
+
 
 # https://chengl.com/docker-workflow/
 

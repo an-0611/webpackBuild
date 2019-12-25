@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');  // 防止將某些import的包（package）打包到bundle中，或者在運行時（runtime）再去從外部獲取這些擴展依賴 // https://webpack.docschina.org/configuration/externals/
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // build打包前清除該目錄檔案 避免舊文件存在
@@ -43,7 +42,7 @@ const client = {
   // mode: 'production',
   devtool: 'none', // 生產模式下:  devtool should be set to (none), source-map,hidden-source-map, or nosources-source-map
   // devtool: 'source-map', // devtool 影響tree shaking https://github.com/webpack-contrib/uglifyjs-webpack-plugin/issues/267
-  // 設定下面幾種 devtool (eval, cheap-eval-source-map, cheap-module-eval-source-map, eval-source-map, eval-source-map)　會造成tree shaking失效
+  // 設定下面幾種 devtool (eval, cheap-eval-source-map, cheap-module-eval-source-map, eval-source-map, eval-source-map)　會造成tree shaking失效 (可能以上幾種會產生sideEffects)
   // devtool 有七種
   // 1. eval : 每個module會封裝到eval裡包裹起來執行，並且會在末尾追加註釋//@ sourceURL
   // 2. source-map : 生成一個SourceMap 文件.
@@ -60,39 +59,15 @@ const client = {
     filename: '[name].js'
   },
   optimization: { // 將main.js的重複依賴項目刪除
-    splitChunks: { // 同時index.html自動拆成兩個依賴 <script type="text/javascript" src="./vendors~main.main.js"></script><script type="text/javascript" src="./main.js"></script>
+    splitChunks: { // 相當於以前的 CommonsChunkPlugin // 同時index.html自動拆成兩個依賴 <script type="text/javascript" src="./vendors~main.main.js"></script><script type="text/javascript" src="./main.js"></script>
       chunks: 'all',
     },
     // sideEffects: false, // default: false // 如果所有代碼都不包含side effect，我們就可以簡單地將該屬性標記為false，來告知webpack，它可以安全地刪除未用到的export
     // "side effect(副作用)" 的定義是，在導入時會執行特殊行為的代碼，而不是僅僅暴露一個export 或多個export。舉例說明，例如polyfill，它影響全局作用域，並且通常不提供export。
     // 如果你的代碼確實有一些副作用，可以改為提供一個數組：
     // https://webpack.docschina.org/guides/tree-shaking/
-    minimizer: [
-      new UglifyJsPlugin({ // 如果在mode:"production"模式，這個插件已經默認添加了 打包文件中添加諸如/* unused harmony export */這樣的註釋 代表有套用 UglifyJsPlugin 它告訴webpack每個模塊明確使用exports
-        uglifyOptions: { // UglifyJS minify options.
-          // warnings: false,
-          // parse: {},
-          // compress,
-          mangle: false, // Note `mangle.properties` is `false` by default.
-          // output: null,
-          output: {
-            beautify: true
-          },
-          // toplevel: false,
-          // nameCache: null,
-          // ie8: false,
-          // keep_fnames: false,
-          // sourceMap: true // set to true if you want JS source maps
-        },
-        // cache: true, // Enable/disable file caching.
-        // chunkFilter: (chunk) => { // 可以針對chunk名稱做條件判斷是否壓縮
-        //   if (chunk.name === 'vendor') {
-        //     return false
-        //   }
-        //   return true
-        // }
-      }),
-    ]
+    // 如果在mode:"production"模式，這個插件已經默認添加了 打包文件中添加諸如/* unused harmony export */這樣的註釋 代表有套用 UglifyJsPlugin 它告訴webpack每個模塊明確使用exports
+    // webpack4 production下會自動機活uglifyJsPlugin 不用再下載 測試發現更小約原本30%而已    
   },
   //   // 其他優化套件
 //   // mini-css-extract-plugin：對於將CSS從主應用程序中分離出來很有用。
@@ -173,7 +148,6 @@ const server = {
   //   __dirname: false,
   //   __filename: false,
   // }
-  
 }
 
 module.exports = [client, server];
@@ -195,3 +169,19 @@ module.exports = [client, server];
 //   ]
 // }
 // 2. 需要使用UglifyJsPlugin插件(壓縮js), 如果在mode:"production"模式，這個插件已經默認添加了，如果在其它模式下，可以手工添加它
+
+// note
+// !!! webpack4 webpack = build --mode production 而 tree shaking 在 webpack4 production環境下會自動tree shaking 
+// !!! package.json sideEffects 如無副作用可設定為false 如果有則可用數組提供路徑 避免被tree shaking (package sideeffect 設定全局) # https://webpack.docschina.org/guides/tree-shaking/
+// !!! 若第三方庫有sideEffect 可能導致整個庫tree shaking fail
+
+// @media (orientation: landscape) {} 處理手機橫屏css
+// webAPI:
+          // 1.requestIdleCallback  # https://ithelp.ithome.com.tw/articles/10217280 // 當browser idle 可以插入任務 ex: 應用於idle期間先抓取資料
+          // 2. MutationObserver # 在實作 Virtual DOM，或是想要監聽 DOM 的變化，來改變對應的 model # https://ithelp.ithome.com.tw/articles/10217810  
+          //    MutationObserver 可以監聽 DOM 的變化，像是增刪、改變節點、Text node 變化等等。 
+          //    異步執行(解決當下異動節點卻抓不到問題) 且當操作結束後 僅觸發一次 增加效能
+          // 3. ServiceWorker for PWA, 讓網頁可以具備像 App 一樣的功能，像是設定桌面 icon、接收通知、更新、離線操作、快取等等，未來還可以利用手機原生的 share API 介面  # https://ithelp.ithome.com.tw/articles/10218255
+
+// MEI : 影片靜音判定 分數夠高影片又有使用auto play 會自動開啟聲音 不會在是靜音 # chrome://media-engagement/
+// 前端快取機制 - CDN, localStorage, Cache-Control, ServiceWorker # https://ithelp.ithome.com.tw/articles/10219276

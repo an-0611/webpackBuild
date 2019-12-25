@@ -1,12 +1,7 @@
 import React from 'react';
-// const webpack = require('webpack')
-import webpack from 'webpack'
-// const webpackDevMiddleware = require('webpack-dev-middleware')
-// const webpackHotMiddleware = require('webpack-hot-middleware')
+import webpack from 'webpack';
+
 // const config = require('./webpack.config.js')
-
-// const http = require('http');
-
 // __dirname：總是返回被執行的js所在文件夾的絕對路徑
 // __filename：總是返回被執行的js的絕對路徑
 
@@ -16,11 +11,7 @@ const port = process.env.PORT || 8080; // 用docker 時換成8080,  webpack outp
 // const host = process.env.PORT ? null : '0.0.0.0';
 
 import { renderToStaticMarkup, renderToString } from 'react-dom/server';
-
-// import { ServerStyleSheet } from 'styled-components'
-
-import { Helmet } from 'react-helmet';
-// how to set server.js to read es6  // 把server 拉到跟entry ./src/index.js 同一層 // dockerfile && package.json server.js's router also need to change
+import { Helmet } from 'react-helmet';// how to set server.js to read es6  // 把server 拉到跟entry ./src/index.js 同一層 // dockerfile && package.json server.js's router also need to change
 import Html from './src/html' // 使用 import 需先編譯打包至dist 開啟的server 路徑也改成 ./dist/server.js
 import App from './src/components/app';
 
@@ -30,8 +21,7 @@ if (process.env.PORT) {
       try {
         const helmet = Helmet.renderStatic();
         const appHtml = renderToString(<App />);
-        var bundles = [];
-
+        // var bundles = [];
         res.send(`<!doctype html>\n${renderToStaticMarkup(<Html
           helmet={helmet}
           appHtml={appHtml}
@@ -49,19 +39,6 @@ if (process.env.PORT) {
       }
     })
 
-  //   app.get('/', function(req, res) { // 之後改成ssr 先用測試
-  //     var body = '<!doctype html>' +
-  //       '<html lang="zh-TW">'+
-  //       '<head><meta charset="utf-8"></head>' +
-  //       '<body>' +
-  //       '<div>server render heroku test</div>'
-  //       '</body>'+
-  //       '</html>';
-  //     res.writeHead(200, {"Content-Type": "text/html"});
-  //     res.write(body);
-  //     res.end();
-  //   });
-  //   app.listen(port, () => console.log((`Listening on ${port}`))) // need listen port to run server
   } catch(err) {
     console.log(err)
   }
@@ -71,7 +48,7 @@ if (process.env.PORT) {
   const host = '0.0.0.0';
   // app.use(path, router) router 代表一個由express.Router()創建的對象 可定義多個路由規則
   // app.get() // 當只有一個規則時 用app.get()直接回掉function 即可
-  
+
   // const compiler = webpack(config);
   // app.use(webpackDevMiddleware(compiler, { // app.use() =< 此方法是宣告使用一個路由，變數 index 就是引入 routers 資料夾裡的 index.route 檔案，該路徑詳細內容就在該文件中編輯。
   //   noInfo: true,
@@ -84,10 +61,7 @@ if (process.env.PORT) {
   //   res.sendFile(__dirname + '/index.html')
   // })
   
-  // const sheet = new ServerStyleSheet()
-
-  try {
-    
+  try {  
     // app.use('/', express.static('dist')); // 放外面 css 就失效 ssr 也跟著壞 路徑改成只抓css? stylecomponent class 還在但失效
     // app.use(express.static('dist')); // 有用middleware 使用app.use 反之 app.get
 
@@ -95,7 +69,6 @@ if (process.env.PORT) {
       try {
         app.use('/', express.static('dist')); // step3 // 完成server 渲染<Html> , 需要把client side 靜態資源復原 (client.bundle.js || css) 取代<Html內容> 但事件消失 hydrate 也沒用
         // 把client side 資源載進來 bundle.js server side render 才吃得到伺服器第一次渲染資料 但放在裡面後 css 會失效 (不確定是不是stylecomponent問題) css 改成由html.js 引入
-
         // res.send is only on express server 只能調用一次 // 用於本機測試server 無論dev or production // 上傳至heroku or aws 會走上面 process.env.PORT的code
         const helmet = Helmet.renderStatic();
         const appHtml = renderToString(<App />);
@@ -120,15 +93,12 @@ if (process.env.PORT) {
       if (error) {
         console.error(error)
       } else {
-        console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port)
+        console.log('伺服器已啟動在 port %s . 打開 http://%s:%s/ 查看', port, host, port);
       }
     })
   } catch (err) {
     console.log('serverErrorCatch: ', err);
   }
-  // finally {
-  //   sheet.seal();
-  // }
 
 }
 
@@ -150,3 +120,51 @@ if (process.env.PORT) {
 
 // most compeleted CICD (contain docker aws nodejs github circleCI...)
 // https://blog.amowu.com/2015/04/devops-continuous-integration-delivery-docker-circleci-aws-beanstalk.html
+
+
+// send email start // https://support.google.com/mail/answer/7104828?hl=zh-Hant&visit_id=637123412801927748-4043501699&rd=3
+// https://support.google.com/mail/answer/7126229
+// import nodemailer from 'nodemailer';
+// import xoauth2 from 'xoauth2'
+
+// var a = xoauth2.createXOAuth2Generator({
+//   user: 'an19940611@gmail.com',
+//   clientId: "805343432535-9oam386tntgkeh754s58ineb0vpu5kic.apps.googleusercontent.com",// 
+//   clientSecret: "BbcFwBEcEe2ev6WIbOOsc2VV",
+//   refreshToken: "1//04oPM1zQ_HvboCgYIARAAGAQSNwF-L9IrWA1d8g8QpPaQ_5wi305CJrU6gX7DVCY13L0TtNsM3OUcv_qXwQ4UyPqvsk8td3kBPCM",
+//   accessToken: 'ya29.Il-1B65tnif-4CQANxs3OPRXBRctBzPhHqwnDrhDszjDn2QtiP5FW6HWxE6C_R7pbKufUVeV-E9zx5Rk-5bcdqOaw5h3yHXIebqbI209UIjDbz53RarEsW1C8uqauPBUSw',
+// });
+
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   // port: 25,
+//   ignoreTLS: 'true',
+//   secure: 'false',
+//   auth: { xoauth2: a },
+//   tls: {
+//     // do not fail on invalid certs
+//     rejectUnauthorized: false
+//   }
+// });
+// https://support.google.com/mail/answer/7126229
+// 外寄郵件 (SMTP) 伺服器 => smtp.gmail.com
+// 需要安全資料傳輸層 (SSL)：是
+// 需要傳輸層安全性 (TLS)：是 (如果可用)
+// 需要驗證：是
+// 安全資料傳輸層 (SSL) 通訊埠：465
+// 傳輸層安全性 (TLS)/STARTTLS 通訊埠：587
+
+// var mailOptions = {
+//   from: 'an19940611@gmail.com',
+//   to: 'an19940611@gmail.com',
+//   subject: 'Sending Email using Node.js',
+//   text: 'That was easy!',
+// };
+
+// transporter.sendMail(mailOptions, function(error, info) {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email send success: ' + info.response);
+//   }
+// });
