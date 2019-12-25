@@ -44,9 +44,8 @@ script:
 after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push $IMAGE
+      docker push $IMAGE;
       fi
-
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
 #       # push會抓預設latest #其他指令如 docker rmi 若沒指定tag 也會自動抓取latest
