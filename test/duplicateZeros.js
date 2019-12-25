@@ -14,7 +14,7 @@ describe('#duplicateZeros', () => {
   // 測試有沒有回傳 NaN
   it('should return [] when array is empty', done => {
     const avg = duplicateZeros([]).length
-    avg.should.equal(5)
+    avg.should.equal(0)
     // avg instanceof Array.should.be.true
     done()
   })
