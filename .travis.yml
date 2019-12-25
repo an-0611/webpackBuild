@@ -23,7 +23,7 @@ env:
 
 script: 
     # start mocha test
-    - npm test
+    - npm test 
     # pass test and start compiler Image
     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
     # -t: terminal, 讓操作者可以使用終端機操作intance
