@@ -43,9 +43,13 @@ script:
 
 after_success:
     # - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; 
-    #   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
+    #   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; 
+      - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
+    # resolve password credential
+    # https://blog.kkbruce.net/2019/01/docker-loing-password-unencrypted.html#.XgMuIdYzYb0
+    # https://docs.docker.com/engine/reference/commandline/login/#credentials-store
       - docker push $IMAGE;
+      - docker logout;
     #   fi
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
