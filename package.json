@@ -40,7 +40,6 @@
     "start": "node ./dist/server.js",
     "git": "git add . && git commit -m",
     "postgit": "git push -u origin master",
-    "buildDev": "webpack --watch --mode development",
     "build": "webpack --mode production",
     "dockerBuild": "docker build -t webpackbuild . --no-cache",
     "dockerServer": "docker run -p 3000:8080 -d webpackbuild",
@@ -49,10 +48,7 @@
     "stopAllContainer": "docker stop $(docker ps -a -q)",
     "deleteAllContainer": "docker rm $(docker ps -a -q)",
     "pull": "git pull",
-    "production": "NODE_ENV=production  nodemon ./dist/server.js",
-    "herokuLogin": "heroku container:login",
-    "herokuPush": "heroku container:push web",
-    "herokuDeploy": "heroku container:release web"
+    "production": "NODE_ENV=production  nodemon ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
