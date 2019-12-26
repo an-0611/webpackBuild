@@ -12,34 +12,18 @@ env:
         - COMMIT=${TRAVIS_COMMIT::8}
         - IMAGE=an19940611/webpackbuild
 
-before_install:
-    # install heroku CLI
-    # - wget -qO- https://toolbelt.heroku.com/install.sh | sh
-    # login docker registries (dockerhub + heroku)
-    - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
-    # - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
-
-install: 
-    # install dep
-    - yarn install
-
 before_script:
-    # - docker build -t $IMAGE:$COMMIT . --no-cache
+    - docker build -t $IMAGE:$COMMIT . --no-cache
     # 避免抓不到預設 手動上latest
-    # - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    - docker tag $IMAGE:$COMMIT $IMAGE:latest
     # docker tag # https://blog.csdn.net/yangshangwei/article/details/52799675
 
 script: 
     - docker version
     - docker-compose version
-    
     # - docker run --rm $IMAGE:latest // run test # Clean up (--rm) 指在容器運行完之後自動清除
-    # - npm run test 
-    - yarn test
-    - yarn build
-    # build docker images
-    - docker build -t $IMAGE:$COMMIT . --no-cache
-    - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    - npm run test 
+     
 #     - 'make test'
 #     # pass test and start compiler Image
 #     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
@@ -49,24 +33,15 @@ script:
 #     - npm dockerServer; sleep 10
 #     - curl --retry 10 --retry-delay 5 -v http://localhost:3000
 
-deploy:
-    provider: script
-    script: 
-        # push to dockerhub
-        docker push $IMAGE;
-        docker logout;
-    branch: master
-
-
-# after_success:
+after_success:
     # - if [ "$TRAVIS_BRANCH" == "master" ]; then
     #   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; 
-    #   - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
+      - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
     # resolve password credential
     # https://blog.kkbruce.net/2019/01/docker-loing-password-unencrypted.html#.XgMuIdYzYb0
     # https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-    #   - docker push $IMAGE;
-    #   - docker logout; 
+      - docker push $IMAGE;
+      - docker logout; 
     #   fi
 #       # 1. 推到docker hub  # process: https://docs.travis-ci.com/user/docker/
 #       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
