@@ -14,10 +14,10 @@ env:
 
 before_install:
     # install heroku CLI
-    # - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+    - wget -qO- https://toolbelt.heroku.com/install.sh | sh
     # login docker registries (dockerhub + heroku)
     - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
-    # - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
+    - echo "$HEROKU_CREDENTIALS_PASSWORD" | docker login -u "$HEROKU_CREDENTIALS_EMAIL" --password-stdin registry.heroku.com
 
 install: 
     # install dep
@@ -39,7 +39,8 @@ script:
     - yarn build
     # build docker images
     - docker build -t $IMAGE:$COMMIT . --no-cache
-    - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    # - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    - docker tag $IMAGE:latest registry.heroku.com/$HEROKU_APP/web
 #     - 'make test'
 #     # pass test and start compiler Image
 #     # - docker build --rm -t $DEPLOY_ACCOUNT/$DEPLOY_IMAGE .
@@ -54,6 +55,9 @@ deploy:
     script: 
         # push to dockerhub
         docker push $IMAGE;
+        # push to heroku
+        docker push registry.heroku.com/$HEROKU_APP/web;
+        heroku container:release web --app $HEROKU_APP
         docker logout;
     branch: master
 
