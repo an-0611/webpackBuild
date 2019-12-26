@@ -41,7 +41,8 @@ script:
     - yarn build
     # build docker images
     - docker build -t $IMAGE:$COMMIT . --no-cache
-    - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    # - docker tag $IMAGE:$COMMIT $IMAGE:latest
+    - docker tag $IMAGE:$COMMIT registry.heroku.com/$HEROKU_APP/web
     # - docker tag $IMAGE:latest registry.heroku.com/$HEROKU_APP/web
 #     - 'make test'
 #     # pass test and start compiler Image
@@ -57,10 +58,13 @@ deploy:
     script: 
 #         # push to dockerhub and heroku
         docker push $IMAGE;
-        docker tag $IMAGE:latest registry.heroku.com/$HEROKU_APP/web
         docker push registry.heroku.com/$HEROKU_APP/web;
-        heroku container:release web --app $HEROKU_APP
+        heroku container:release web --app $HEROKU_APP;
         docker logout;
+        # - docker tag $IMAGE registry.heroku.com/$HEROKU_APP/web
+        # docker tag $IMAGE:latest registry.heroku.com/$HEROKU_APP/web
+        # docker push registry.heroku.com/$HEROKU_APP/web;
+        
     branch: master
 
 
