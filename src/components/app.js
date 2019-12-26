@@ -37,7 +37,7 @@ class App extends Component {
         </Helmet>
         <div className="app">webpack 4 環境建制</div>
         <Container primary>
-          <div>test123</div>
+          <div>heroku => docker registry container test</div>
           <button onClick={() => { this.callValue() }}>callValue</button>
         </Container>
       </Container>
