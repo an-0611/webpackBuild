@@ -11,10 +11,10 @@ env:
     global:
         - COMMIT=${TRAVIS_COMMIT::8}
         - IMAGE=an19940611/webpackbuild
-
+        
 before_install:
     # install heroku CLI
-    - wget -qO- https://toolbelt.heroku.com/install.sh | sh
+    # - wget -qO- https://toolbelt.heroku.com/install.sh | sh
     # login docker registries (dockerhub + heroku)
     - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin;
     - echo "$HEROKU_CREDENTIALS_PASSWORD" | docker login -u "$HEROKU_CREDENTIALS_EMAIL" --password-stdin registry.heroku.com
@@ -22,8 +22,9 @@ before_install:
 install: 
     # install dep
     # - yarn install
+    - npm install -g heroku
 
-before_script:
+# before_script:
     # - docker build -t $IMAGE:$COMMIT . --no-cache
     # 避免抓不到預設 手動上latest
     # - docker tag $IMAGE:$COMMIT $IMAGE:latest
@@ -53,9 +54,8 @@ script:
 deploy:
     provider: script
     script: 
-        # push to dockerhub
+#         # push to dockerhub and heroku
         docker push $IMAGE;
-        # push to heroku
         docker push registry.heroku.com/$HEROKU_APP/web;
         heroku container:release web --app $HEROKU_APP
         docker logout;
