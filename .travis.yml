@@ -21,7 +21,7 @@ before_install:
 
 install: 
     # install dep
-    - yarn install
+    # - yarn install
 
 before_script:
     # - docker build -t $IMAGE:$COMMIT . --no-cache
