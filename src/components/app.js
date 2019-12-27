@@ -22,10 +22,35 @@ class App extends Component {
       value: 666,
     };
     this.callValue = this.callValue.bind(this);
+    this.triggerNotify = this.triggerNotify.bind(this);
+  }
+
+  componentDidMount() {
+    
   }
 
   callValue() {
     alert(this.state.value)
+  }
+
+  triggerNotify() {
+    if (!('Notification' in window)) {
+      alert('本瀏覽器不支援推播通知');
+    } else {
+      const notify = Notification.requestPermission();
+      notify.then((permission) => {
+        if (permission == "granted") {
+          const title = "您有一則新的訊息";
+          const msg = new Notification(title, {
+            body: "你好,我是An",
+            icon: "https://image.flaticon.com/icons/png/512/463/463202.png"
+          });
+          msg.addEventListener("click", event=> {
+              alert("點擊接受");
+          });
+        }
+      });
+    }
   }
 
   render() {
@@ -37,15 +62,11 @@ class App extends Component {
         </Helmet>
         <div className="app">webpack 4 環境建制</div>
         <Container primary>
-          <div>heroku => docker registry container test</div>
-          <button onClick={() => { this.callValue() }}>callValue</button>
+          <div>heroku => docker registry container</div>
+          <button onClick={() => { this.callValue() }}>Calculate</button>
+          <button onClick={() => { this.triggerNotify() }}>Send Notify</button>
         </Container>
       </Container>
-      // npm run git -- "" && postgit
-      // npm run git -- "update css module" && postgit
-      // 測試 build 好的檔案 'test': npm run build && mocha --compilers js:babel-core/register
-      // docker deploy => npm run build && docker-compose up -d https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/188625/
-      // dockerfile setting https://www.jinnsblog.com/2018/12/docker-dockerfile-guide.html
     );
   }
 }

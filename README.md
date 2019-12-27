@@ -114,20 +114,27 @@ Listening ./dist/server.js modify
 > webpack split prod dev env (webpack4 no need)
 
 ## Reference
+[Docker+Travis+Heroku(Registry container)](https://medium.com/@javierfernandes/continuous-deployment-con-docker-travis-heroku-c24042fb830b)
 [MarkDown grammar](https://docs.microsoft.com/zh-tw/contribute/how-to-write-use-markdown)
 [Webpack code splitting](https://webpack.js.org/guides/code-splitting/)
 [Webpack 2 env](https://neighborhood999.github.io/webpack-tutorial-gitbook/Part1/WebpackDevServer.html)
 [Node.js webserver](https://ithelp.ithome.com.tw/articles/10185302)
+[Docker deploy Heroku](https://blog.wu-boy.com/2019/02/deploy-golang-app-to-heroku/)
+[DevOps-Docker-CircleCI-AWS](https://blog.amowu.com/2015/04/devops-continuous-integration-delivery-docker-circleci-aws-beanstalk.html)
+[Travis-after-success](https://stackoverflow.com/questions/31338562/travisci-run-after-success-on-a-specific-branch)
+[Mocha test with dockerfile](https://hub.docker.com/r/usemtech/nodejs-mocha/dockerfile)
+[Docker container run test-1](https://admhelp.microfocus.com/leanft/en/14.50-14.53/HelpCenter/Content/HowTo/Run-tests-in-docker.htm)
+[Docker container run test-2](https://dzone.com/articles/testing-nodejs-application-using-mocha-and-docker)
+
 
 ## useful article
 [webpack4 react babel7 sample 0 to 1](https://blog.usejournal.com/setting-up-react-webpack-4-babel-7-from-scratch-2019-b771dca2f637)
 
-> [!TIP]
+[!TIP]
 > Dependencies on Heroku need update webpack && express
 > npm run dockerize need open docker first
 > git pull --rebase need storaged
 
-> [!CAUTION]
+[!CAUTION]
 > Entry can't use react e.g. class App extends component , can't read it.(resolved, use babel to transform es5)
 > Update Heroku question: Filename need lowercase. (maybe resolve, test no yet)
-
