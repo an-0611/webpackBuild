@@ -2,6 +2,9 @@
 The project is build with React + webpack4 + babel7 from 0 to 1 <br />
 The Heroku [Demo](https://webpackbuild.herokuapp.com/) is here <br />
 
+## Process
+> github commit (master) => travis => mocha => build docker images => deploy to docker hub => deploy images to heroku(Registry container)
+
 ## Stacks
 | Name | Version | Description |
 |---------|--------|-------------|
@@ -125,6 +128,7 @@ Listening ./dist/server.js modify
 [Mocha test with dockerfile](https://hub.docker.com/r/usemtech/nodejs-mocha/dockerfile)
 [Docker container run test-1](https://admhelp.microfocus.com/leanft/en/14.50-14.53/HelpCenter/Content/HowTo/Run-tests-in-docker.htm)
 [Docker container run test-2](https://dzone.com/articles/testing-nodejs-application-using-mocha-and-docker)
+[Docker to Heroku(Registry container)](https://blog.wu-boy.com/2019/02/deploy-golang-app-to-heroku/)
 
 
 ## useful article
@@ -138,3 +142,6 @@ Listening ./dist/server.js modify
 [!CAUTION]
 > Entry can't use react e.g. class App extends component , can't read it.(resolved, use babel to transform es5)
 > Update Heroku question: Filename need lowercase. (maybe resolve, test no yet)
+
+## others
+redux observable bot webhook fiber typescript
